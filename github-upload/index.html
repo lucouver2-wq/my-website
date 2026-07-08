@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Computational Imaging for Next-Generation Optical Astronomy</title>
+    <meta
+      name="description"
+      content="Interactive research portfolio for computational imaging in optical astronomy: turbulence sensing, meta-imaging, ASTERIS denoising, and a next-generation astronomy roadmap."
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <nav class="topnav">
+      <div class="wrap">
+        <a class="brand" href="#top">Computational Imaging <span>x</span> Astronomy</a>
+        <span class="ver">interactive</span>
+        <div class="navlinks">
+          <a href="#limits">Three Limits</a>
+          <a href="#work1">Work 1</a>
+          <a href="#work2">Work 2</a>
+          <a href="#work3">Work 3</a>
+          <a href="#work4">Work 4</a>
+          <a href="#papers">Papers</a>
+          <a href="#resources">Resources</a>
+        </div>
+      </div>
+    </nav>
+
+    <header class="hero" id="top">
+      <canvas id="stars" aria-hidden="true"></canvas>
+      <div class="shade"></div>
+      <div class="wrap hero-inner">
+        <div class="eyebrow">Tsinghua University / Computational Imaging</div>
+        <h1>Computational imaging for next-generation optical astronomy</h1>
+        <p class="tagline">From imaging for looking, to sensing for understanding.</p>
+        <p class="sub">
+          Four works form one story: measure atmospheric turbulence, correct optical aberrations,
+          push faint-source detection with ASTERIS, and connect these ideas into a roadmap for future observatories.
+        </p>
+        <div class="btnrow">
+          <a class="btn primary" href="#work3">Use the ASTERIS explorer</a>
+          <a class="btn" href="#limits">See the framework</a>
+        </div>
+        <div class="hero-stats">
+          <div><b>+1.0 mag</b><span>deeper detection with ASTERIS</span></div>
+          <div><b>3x</b><span>more z &ge; 9 candidates</span></div>
+          <div><b>video-rate</b><span>wide-field turbulence sensing</span></div>
+          <div><b>encoder / decoder</b><span>co-designed optics and algorithms</span></div>
+        </div>
+      </div>
+    </header>
+
+    <section id="limits">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="chip">The framework</span>
+          <h2>Three limits, four research answers.</h2>
+          <p class="lede">
+            Optical astronomy is limited by atmosphere, optics, and noise. The four works below show how
+            computational imaging turns each limit into a measurable, correctable, or learnable signal.
+          </p>
+        </div>
+        <div class="limit-cards">
+          <a class="lcard limit-card seeing" href="#work1" data-limit="seeing">
+            <i></i>
+            <span class="num">Limit 01</span>
+            <h3>Atmospheric turbulence</h3>
+            <p>Wide-field wavefront sensing observes turbulence directly instead of relying on a single guide star.</p>
+            <span class="go">Nature Photonics 2024</span>
+          </a>
+          <a class="lcard limit-card aperture" href="#work2" data-limit="aperture">
+            <i></i>
+            <span class="num">Limit 02</span>
+            <h3>Optical aberrations</h3>
+            <p>A meta-imaging sensor records angular information so aberrations and depth can be recovered computationally.</p>
+            <span class="go">Nature 2022</span>
+          </a>
+          <a class="lcard limit-card noise accent" href="#work3" data-limit="noise">
+            <i></i>
+            <span class="num">Limit 03</span>
+            <h3>Noise floor</h3>
+            <p>ASTERIS learns spatiotemporal noise across exposures and reveals fainter astronomical sources.</p>
+            <span class="go">Astronomer-facing tool</span>
+          </a>
+          <a class="lcard limit-card synthesis" href="#work4" data-limit="all">
+            <i></i>
+            <span class="num">Synthesis</span>
+            <h3>Next-generation astronomy</h3>
+            <p>A review-level roadmap connects computational optics, sensing, reconstruction, and science validation.</p>
+            <span class="go">Photonics Insights 2026</span>
+          </a>
+        </div>
+        <p class="hint">Click a limit to highlight the related research cards below.</p>
+        <div class="work-deck">
+          <a class="work-card" href="#work1" data-limits="seeing">
+            <small>01 / Nature Photonics</small>
+            <h3>Wide-field wavefront sensing</h3>
+            <p>Measure turbulence as a time-varying wavefront across the field of view.</p>
+            <span>seeing</span>
+          </a>
+          <a class="work-card" href="#work2" data-limits="aperture seeing">
+            <small>02 / Nature</small>
+            <h3>Meta-imaging sensor</h3>
+            <p>Use encoded optical measurement to correct aberrations and refocus computationally.</p>
+            <span>aperture + seeing</span>
+          </a>
+          <a class="work-card" href="#work3" data-limits="noise">
+            <small>03 / ASTERIS</small>
+            <h3>Self-supervised denoising</h3>
+            <p>Learn correlated noise from aligned exposures and recover fainter astronomical sources.</p>
+            <span>noise</span>
+          </a>
+          <a class="work-card" href="#work4" data-limits="aperture seeing noise all">
+            <small>04 / Photonics Insights</small>
+            <h3>Next-generation roadmap</h3>
+            <p>Connect optical encoders, digital decoders, and astronomy-native validation metrics.</p>
+            <span>review</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="work1" class="reveal">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="chip">Work 1 / Nature Photonics 2024</span>
+          <h2>Directly observing atmospheric turbulence.</h2>
+          <p class="lede">
+            A video-rate wide-field wavefront sensor makes turbulence visible across the field of view,
+            measuring how wavefronts evolve before they blur astronomical images.
+          </p>
+        </div>
+        <div class="grid2">
+          <div>
+            <div class="panel">
+              <h3>Scientific idea</h3>
+              <p>
+                Ground-based telescopes are limited by atmospheric turbulence. This work demonstrates a wide-field
+                sensing strategy that records wavefront variation over time, helping astronomers understand where,
+                when, and how seeing degrades the image.
+              </p>
+              <div class="chips">
+                <span>video-rate sensing</span>
+                <span>wide field</span>
+                <span>adaptive optics precursor</span>
+              </div>
+            </div>
+            <div class="panel">
+              <h3>What to show visitors</h3>
+              <p>
+                The interactive phase screen below turns turbulence strength and wind into a changing point-spread
+                function. It is illustrative, but it gives a useful intuition for why wavefront sensing matters.
+              </p>
+            </div>
+          </div>
+          <div class="panel">
+            <h3>Turbulence playground</h3>
+            <div class="phase-grid">
+              <canvas id="phase-canvas" width="160" height="160"></canvas>
+              <canvas id="psf-canvas" width="160" height="160"></canvas>
+            </div>
+            <div class="ctl">
+              <label for="r0">Fried parameter r0</label>
+              <input id="r0" type="range" min="5" max="20" step="0.5" value="10" />
+              <output id="r0-value">10 cm</output>
+            </div>
+            <div class="ctl">
+              <label for="wind">Wind speed</label>
+              <input id="wind" type="range" min="1" max="20" value="6" />
+              <output id="wind-value">6 m/s</output>
+            </div>
+            <label class="switch"><input id="correction" type="checkbox" /> wavefront correction on</label>
+            <div class="readout" id="seeing-output">Seeing FWHM ~= 1.01 arcsec at 500 nm</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="work2" class="reveal">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="chip">Work 2 / Nature 2022</span>
+          <h2>A sensor that makes imperfect optics computational.</h2>
+          <p class="lede">
+            The integrated meta-imaging sensor captures information that conventional cameras discard, enabling
+            digital aberration correction and 3D refocusing after the exposure.
+          </p>
+        </div>
+        <div class="grid2">
+          <div class="panel">
+            <h3>Aberration correction curtain</h3>
+            <div class="cmp" id="aberration-compare">
+              <canvas width="420" height="420"></canvas>
+              <canvas width="420" height="420"></canvas>
+              <div class="divider"></div>
+              <span class="tag left">uncorrected</span>
+              <span class="tag right">corrected</span>
+              <input class="scrub" type="range" min="0" max="100" value="52" aria-label="Comparison slider" />
+            </div>
+            <p class="note">Drag across the image to compare a synthetic aberrated field with a corrected one.</p>
+          </div>
+          <div>
+            <div class="panel">
+              <h3>Digital refocusing</h3>
+              <canvas id="focus-canvas" width="560" height="260"></canvas>
+              <div class="ctl">
+                <label for="focus">Focal depth</label>
+                <input id="focus" type="range" min="0" max="100" value="50" />
+                <output id="focus-value">mid</output>
+              </div>
+              <p class="note">One measurement, multiple computational focal planes.</p>
+            </div>
+            <div class="panel">
+              <h3>Why it matters</h3>
+              <p>
+                Instead of building a perfect optical system, the instrument measures richer optical information
+                and leaves part of the image formation problem to computation.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="work3" class="reveal">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="chip">Work 3 / ASTERIS</span>
+          <h2>Use ASTERIS like an astronomer.</h2>
+          <p class="lede">
+            ASTERIS is a self-supervised spatiotemporal denoising framework for astronomical imaging. It uses
+            aligned exposures to learn correlated noise and improve faint-source detection while preserving
+            photometric and PSF fidelity.
+          </p>
+        </div>
+
+        <div class="steps">
+          <article>
+            <span>01</span>
+            <h3>Align exposures</h3>
+            <p>Start from reduced frames registered to a common WCS and grouped by pointing.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Split by signal regime</h3>
+            <p>Bright pixels keep dynamic range; faint regions become the learning target.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Denoise and validate</h3>
+            <p>Compare completeness, purity, photometry, and PSF fidelity before trusting candidates.</p>
+          </article>
+        </div>
+
+        <div class="grid2 astro-tool">
+          <div class="panel controls-panel">
+            <h3>Observation setup</h3>
+            <div class="ctl">
+              <label for="telescope">Telescope</label>
+              <select id="telescope">
+                <option value="jwst">JWST / NIRCam</option>
+                <option value="subaru">Subaru / MOIRCS</option>
+                <option value="custom">Custom deep field</option>
+              </select>
+              <output id="telescope-note">space</output>
+            </div>
+            <div class="ctl">
+              <label for="exposures">Input exposures</label>
+              <input id="exposures" type="range" min="4" max="24" step="4" value="8" />
+              <output id="exposures-value">8</output>
+            </div>
+            <div class="ctl">
+              <label for="noise">Background noise</label>
+              <input id="noise" type="range" min="0" max="100" value="42" />
+              <output id="noise-value">42%</output>
+            </div>
+            <div class="ctl">
+              <label for="target-mag">Target magnitude</label>
+              <input id="target-mag" type="range" min="27.5" max="32" step="0.1" value="30.8" />
+              <output id="target-mag-value">30.8</output>
+            </div>
+            <div class="seg" id="method-tabs">
+              <button class="on" type="button" data-method="coadd">Co-addition</button>
+              <button type="button" data-method="asteris">ASTERIS</button>
+            </div>
+            <div class="readout" id="method-readout">Co-addition baseline selected.</div>
+          </div>
+
+          <div class="panel">
+            <h3>Deep-field preview</h3>
+            <div class="deep-field" id="deep-field"></div>
+            <div class="stat-row tight">
+              <div class="stat"><b id="limit">31.2</b><span>estimated 5 sigma limit (AB)</span></div>
+              <div class="stat"><b id="complete">82%</b><span>source completeness</span></div>
+              <div class="stat"><b id="purity">86%</b><span>detection purity</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid2">
+          <div class="panel">
+            <h3>Detection limit explorer</h3>
+            <div class="chart" id="limit-chart"></div>
+            <div class="ctl">
+              <label for="mag-threshold">Science threshold</label>
+              <input id="mag-threshold" type="range" min="27" max="32" step="0.1" value="30" />
+              <output id="mag-threshold-value">30.0</output>
+            </div>
+            <div class="readout" id="threshold-readout"></div>
+          </div>
+          <div>
+            <div class="panel">
+              <h3>Candidate triage</h3>
+              <div class="candidate-table">
+                <div><strong>Candidate</strong><strong>S/N</strong><strong>Status</strong></div>
+                <div><span>JOF-0317</span><span id="snr-a">5.8</span><span id="status-a">Recovered</span></div>
+                <div><span>JOF-0944</span><span id="snr-b">4.9</span><span id="status-b">Marginal</span></div>
+                <div><span>GLMP-2210</span><span id="snr-c">6.2</span><span id="status-c">Recovered</span></div>
+              </div>
+            </div>
+            <div class="panel video-panel">
+              <h3>Paper introduction video</h3>
+              <p>
+                The original local presentation includes a paper-introduction video. For the web deployment,
+                this version keeps the interactive research site online without the oversized local video file.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="tool">
+          <div class="tool-head">
+            <span class="ico">A</span>
+            <div>
+              <h3>ASTERIS before / after gallery</h3>
+              <p class="subtle">Drag the divider, or click a tag to replace either side with your own image.</p>
+            </div>
+          </div>
+          <div class="ba-grid">
+            <figure class="ba">
+              <div class="ba-frame">
+                <img class="ba-img ba-after" data-label="ASTERIS" data-kind="after" alt="ASTERIS denoised field" />
+                <img class="ba-img ba-before" data-label="CO-ADD" data-kind="before" alt="Co-added field" />
+                <span class="ba-div"></span>
+                <button class="ba-tag l" type="button" data-kind="before">Co-add</button>
+                <button class="ba-tag r" type="button" data-kind="after">ASTERIS</button>
+                <input class="ba-range" type="range" min="0" max="100" value="50" aria-label="Before after comparison" />
+              </div>
+              <figcaption><b>Crowded deep field.</b> Use the slider to inspect how faint sources separate from correlated background noise.</figcaption>
+            </figure>
+            <figure class="ba">
+              <div class="ba-frame">
+                <img class="ba-img ba-after" data-label="FAINT ARC" data-kind="after" alt="Recovered lensing arc" />
+                <img class="ba-img ba-before" data-label="RAW STACK" data-kind="before" alt="Raw stacked lensing arc" />
+                <span class="ba-div"></span>
+                <button class="ba-tag l" type="button" data-kind="before">Raw stack</button>
+                <button class="ba-tag r" type="button" data-kind="after">Recovered</button>
+                <input class="ba-range" type="range" min="0" max="100" value="50" aria-label="Before after comparison" />
+              </div>
+              <figcaption><b>Low-surface-brightness structure.</b> The comparison mirrors the scientific use case: morphology that was previously below the noise floor.</figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <section id="tryit" class="tool">
+          <div class="tool-head">
+            <span class="ico">GPU</span>
+            <div>
+              <h3>Quickstart configurator</h3>
+              <p class="subtle">Configure an ASTERIS run and copy a command for a local GPU machine or notebook.</p>
+            </div>
+          </div>
+          <div class="cfg-grid">
+            <div>
+              <label class="label" for="instrument-config">Instrument / band</label>
+              <select id="instrument-config">
+                <option value="nrcshort">JWST NIRCam short wavelength (&lt; 2.5 um)</option>
+                <option value="nrclong">JWST NIRCam long wavelength (&gt;= 2.5 um)</option>
+                <option value="custom">Other instrument / train custom model</option>
+              </select>
+
+              <label class="label" for="cfg-exposures">Available exposures</label>
+              <input class="txt" id="cfg-exposures" type="number" min="1" value="8" />
+
+              <label class="label" for="pixel-scale">Pixel scale</label>
+              <input class="txt" id="pixel-scale" type="text" value="0.04" />
+
+              <div class="model-pill" id="model-output">ASTERIS8_nrcshort</div>
+              <ul class="check" id="cfg-checklist"></ul>
+            </div>
+            <div>
+              <label class="label">Local GPU command</label>
+              <div class="codebox">
+                <button class="copy" type="button" data-copy="command-output">Copy</button>
+                <pre id="command-output"></pre>
+              </div>
+              <label class="label">Colab / notebook bootstrap</label>
+              <div class="codebox">
+                <button class="copy" type="button" data-copy="colab-cell">Copy</button>
+                <pre id="colab-cell"># set Runtime to GPU before running
+!git clone https://github.com/freemercury/ASTERIS_THU.git
+%cd ASTERIS_THU
+!pip install -r requirements.txt
+# download pretrained weights and demo data from Zenodo
+!python ASTERIS_test_demo_short.py</pre>
+              </div>
+              <div class="runrow">
+                <a class="btn primary" href="https://colab.research.google.com/" target="_blank" rel="noreferrer">Open GPU Colab</a>
+                <a class="btn" href="https://github.com/freemercury/ASTERIS_THU" target="_blank" rel="noreferrer">Code on GitHub</a>
+                <a class="btn" href="https://doi.org/10.5281/zenodo.17114980" target="_blank" rel="noreferrer">Weights</a>
+                <a class="btn" href="https://doi.org/10.5281/zenodo.17105027" target="_blank" rel="noreferrer">Demo data</a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section id="work4" class="reveal">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="chip">Work 4 / Photonics Insights 2026</span>
+          <h2>A roadmap for computational optical astronomy.</h2>
+          <p class="lede">
+            The review frames next-generation astronomy as a co-design problem: optics, sensors, reconstruction,
+            calibration, and scientific measurement should be built as one computational imaging system.
+          </p>
+        </div>
+        <div class="timeline">
+          <div class="tl-buttons" id="roadmap-buttons"></div>
+          <div class="tl-card" id="roadmap-card"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="papers">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="chip">References</span>
+          <h2>The four works behind the site.</h2>
+        </div>
+        <div class="papers">
+          <div class="paper">
+            <div>
+              <div class="title">Direct observation of atmospheric turbulence with a video-rate wide-field wavefront sensor</div>
+              <div class="meta">Nature Photonics, 2024</div>
+            </div>
+            <a href="https://www.nature.com/articles/s41566-024-01466-3" target="_blank" rel="noreferrer">Open</a>
+          </div>
+          <div class="paper">
+            <div>
+              <div class="title">An integrated imaging sensor for aberration-corrected 3D photography</div>
+              <div class="meta">Nature, 2022</div>
+            </div>
+            <a href="https://www.nature.com/articles/s41586-022-05306-8" target="_blank" rel="noreferrer">Open</a>
+          </div>
+          <div class="paper">
+            <div>
+              <div class="title">Deeper detection limits in astronomical imaging using self-supervised spatiotemporal denoising</div>
+              <div class="meta">ASTERIS research work</div>
+            </div>
+            <a href="#work3">Use tool</a>
+          </div>
+          <div class="paper">
+            <div>
+              <div class="title">Computational imaging towards next-generation optical observational astronomy</div>
+              <div class="meta">Photonics Insights, 2026</div>
+            </div>
+            <a href="https://www.spiedigitallibrary.org/journals/photonics-insights/volume-5/issue-1/R04/Computational-imaging-towards-next-generation-optical-observational-astronomy/10.3788/PI.2026.R04.full" target="_blank" rel="noreferrer">Open</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="resources">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="chip">Interfaces</span>
+          <h2>External interfaces and reusable assets.</h2>
+          <p class="lede">A launchpad for the work: papers, code, data, models, and practical execution paths.</p>
+        </div>
+        <div class="resource-grid">
+          <article class="resource-card">
+            <h3>Paper interfaces</h3>
+            <a href="https://www.nature.com/articles/s41566-024-01466-3" target="_blank" rel="noreferrer">Nature Photonics 2024</a>
+            <a href="https://www.nature.com/articles/s41586-022-05306-8" target="_blank" rel="noreferrer">Nature 2022</a>
+            <a href="#work3">ASTERIS tool page</a>
+            <a href="https://www.spiedigitallibrary.org/journals/photonics-insights/volume-5/issue-1/R04/Computational-imaging-towards-next-generation-optical-observational-astronomy/10.3788/PI.2026.R04.full" target="_blank" rel="noreferrer">Photonics Insights 2026</a>
+          </article>
+          <article class="resource-card">
+            <h3>ASTERIS execution</h3>
+            <a href="https://github.com/freemercury/ASTERIS_THU" target="_blank" rel="noreferrer">GitHub repository</a>
+            <a href="https://doi.org/10.5281/zenodo.17114980" target="_blank" rel="noreferrer">Pretrained weights</a>
+            <a href="https://doi.org/10.5281/zenodo.17105027" target="_blank" rel="noreferrer">Demo data</a>
+            <a href="https://colab.research.google.com/" target="_blank" rel="noreferrer">GPU notebook</a>
+          </article>
+          <article class="resource-card">
+            <h3>For astronomers</h3>
+            <a href="#tryit">Configure an ASTERIS run</a>
+            <a href="#work3">Estimate limiting depth</a>
+            <a href="#work3">Triage faint candidates</a>
+            <a href="#work3">Inspect before / after images</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="wrap footer-cols">
+        <div>
+          <h3>Computational Imaging x Astronomy</h3>
+          <p>Interactive static site for presenting four connected works in next-generation optical observational astronomy.</p>
+          <p class="note">Interactive curves and previews are explanatory models for presentation, not re-derived scientific measurements.</p>
+        </div>
+        <div>
+          <h3>Works</h3>
+          <a href="#work1">Wide-field wavefront sensing</a>
+          <a href="#work2">Meta-imaging sensor</a>
+          <a href="#work3">ASTERIS denoising</a>
+          <a href="#work4">Computational astronomy review</a>
+        </div>
+        <div>
+          <h3>Run ASTERIS</h3>
+          <a href="#tryit">Quickstart configurator</a>
+          <a href="https://github.com/freemercury/ASTERIS_THU" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="https://doi.org/10.5281/zenodo.17114980" target="_blank" rel="noreferrer">Weights</a>
+          <a href="https://doi.org/10.5281/zenodo.17105027" target="_blank" rel="noreferrer">Demo data</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="./main.js"></script>
+  </body>
+</html>
