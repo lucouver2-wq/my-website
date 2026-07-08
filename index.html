@@ -21,6 +21,8 @@
           <a href="#work2">Work 2</a>
           <a href="#work3">Work 3</a>
           <a href="#work4">Work 4</a>
+          <a href="#mission">Mission</a>
+          <a href="#evidence">Evidence</a>
           <a href="#papers">Papers</a>
           <a href="#resources">Resources</a>
         </div>
@@ -50,6 +52,41 @@
         </div>
       </div>
     </header>
+
+    <section id="mission" class="mission-band">
+      <div class="wrap">
+        <div class="mission-grid">
+          <div class="mission-copy">
+            <span class="chip">Mission control</span>
+            <h2>Explore the work like an observatory pipeline.</h2>
+            <p class="lede">
+              The site now reads as a guided research mission: frame the astronomy problem, inspect the instruments,
+              test the ASTERIS workflow, and compare the paper evidence behind each claim.
+            </p>
+          </div>
+          <div class="orbit-map" aria-label="Research mission map">
+            <button type="button" class="orbit-node on" data-jump="#limits"><span>01</span>Limits</button>
+            <button type="button" class="orbit-node" data-jump="#work1"><span>02</span>Sense</button>
+            <button type="button" class="orbit-node" data-jump="#work3"><span>03</span>Denoise</button>
+            <button type="button" class="orbit-node" data-jump="#evidence"><span>04</span>Validate</button>
+          </div>
+        </div>
+        <div class="signal-strip">
+          <article>
+            <b>Observe</b>
+            <span>Start with atmosphere, optics, and noise as measurable signals.</span>
+          </article>
+          <article>
+            <b>Reconstruct</b>
+            <span>Use co-designed optics and self-supervised learning to recover information.</span>
+          </article>
+          <article>
+            <b>Validate</b>
+            <span>Compare completeness, purity, photometry, and real astronomical candidates.</span>
+          </article>
+        </div>
+      </div>
+    </section>
 
     <section id="limits">
       <div class="wrap">
@@ -434,6 +471,63 @@
       </div>
     </section>
 
+    <section id="evidence" class="reveal">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="chip">Paper evidence</span>
+          <h2>Figures from the paper, turned into an interactive wall.</h2>
+          <p class="lede">
+            These selected figures connect the website's interactive claims to the source paper: simulated sources,
+            real JWST/Subaru validation, high-redshift candidates, and photometric checks.
+          </p>
+        </div>
+        <div class="evidence-toolbar" id="evidence-tabs">
+          <button class="on" type="button" data-filter="all">All</button>
+          <button type="button" data-filter="simulation">Simulation</button>
+          <button type="button" data-filter="real">Real data</button>
+          <button type="button" data-filter="candidate">Candidates</button>
+        </div>
+        <div class="evidence-grid">
+          <figure class="evidence-card wide" data-kind="real">
+            <button type="button" data-img="./public/paper/fig-real-validation.jpg" data-title="Observational validation">
+              <img src="./public/paper/fig-real-validation.jpg" alt="ASTERIS observational validation figure" />
+            </button>
+            <figcaption>
+              <b>Observational validation</b>
+              <span>Real data comparison shows ASTERIS recovering fainter structure while preserving photometric consistency.</span>
+            </figcaption>
+          </figure>
+          <figure class="evidence-card" data-kind="simulation">
+            <button type="button" data-img="./public/paper/fig-mock-performance.jpg" data-title="Mock-source benchmark">
+              <img src="./public/paper/fig-mock-performance.jpg" alt="Mock-source performance figure" />
+            </button>
+            <figcaption>
+              <b>Mock-source benchmark</b>
+              <span>Completeness, purity, F-score, PSF profile, and photometric accuracy in one performance panel.</span>
+            </figcaption>
+          </figure>
+          <figure class="evidence-card" data-kind="candidate">
+            <button type="button" data-img="./public/paper/fig-jades-candidates.jpg" data-title="JADES Origins Field">
+              <img src="./public/paper/fig-jades-candidates.jpg" alt="JADES Origins Field candidates figure" />
+            </button>
+            <figcaption>
+              <b>JADES Origins Field</b>
+              <span>Candidate map and zoomed thumbnails show how faint detections become inspectable.</span>
+            </figcaption>
+          </figure>
+          <figure class="evidence-card" data-kind="candidate">
+            <button type="button" data-img="./public/paper/fig-sed-confirmation.jpg" data-title="Photometry and SED checks">
+              <img src="./public/paper/fig-sed-confirmation.jpg" alt="Photometry and SED confirmation figure" />
+            </button>
+            <figcaption>
+              <b>Photometry and SED checks</b>
+              <span>Signal-to-noise and spectral energy distributions help turn visual detections into science candidates.</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
     <section id="papers">
       <div class="wrap">
         <div class="sec-head">
@@ -529,6 +623,12 @@
         </div>
       </div>
     </footer>
+
+    <dialog class="lightbox" id="figure-lightbox">
+      <button class="lightbox-close" type="button" aria-label="Close figure">Close</button>
+      <img alt="" />
+      <p></p>
+    </dialog>
 
     <script src="./main.js"></script>
   </body>

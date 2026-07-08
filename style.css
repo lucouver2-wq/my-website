@@ -276,6 +276,141 @@ p {
   font-size: 0.82rem;
 }
 
+.mission-band {
+  padding: 72px 0;
+  background:
+    radial-gradient(900px 420px at 82% 26%, rgba(90, 200, 250, 0.16), transparent 60%),
+    linear-gradient(180deg, var(--bg), var(--bg2));
+}
+
+.mission-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(360px, 1.1fr);
+  gap: 40px;
+  align-items: center;
+}
+
+.mission-copy {
+  max-width: 560px;
+}
+
+.orbit-map {
+  position: relative;
+  display: grid;
+  min-height: 360px;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(90, 200, 250, 0.18), transparent 12%),
+    repeating-radial-gradient(circle at 50% 50%, transparent 0 58px, rgba(219, 228, 240, 0.08) 60px 61px),
+    linear-gradient(135deg, #050912, #0d1526);
+}
+
+.orbit-map::before,
+.orbit-map::after {
+  position: absolute;
+  content: "";
+}
+
+.orbit-map::before {
+  width: 72%;
+  height: 72%;
+  border: 1px solid rgba(219, 228, 240, 0.16);
+  border-radius: 50%;
+}
+
+.orbit-map::after {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--noise);
+  box-shadow:
+    0 0 22px var(--noise),
+    110px -76px 0 -2px var(--seeing),
+    -124px 68px 0 -2px var(--aperture);
+}
+
+.orbit-node {
+  position: absolute;
+  z-index: 2;
+  display: grid;
+  width: 132px;
+  min-height: 74px;
+  place-items: center;
+  border: 1px solid rgba(219, 228, 240, 0.2);
+  border-radius: 12px;
+  padding: 10px;
+  background: rgba(6, 8, 15, 0.78);
+  color: var(--text);
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.orbit-node span {
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 0.76rem;
+}
+
+.orbit-node.on,
+.orbit-node:hover {
+  border-color: var(--accent);
+  background: rgba(90, 200, 250, 0.12);
+}
+
+.orbit-node:nth-child(1) {
+  top: 38px;
+  left: 42px;
+}
+
+.orbit-node:nth-child(2) {
+  top: 46px;
+  right: 42px;
+}
+
+.orbit-node:nth-child(3) {
+  right: 56px;
+  bottom: 42px;
+}
+
+.orbit-node:nth-child(4) {
+  bottom: 34px;
+  left: 54px;
+}
+
+.signal-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  margin-top: 26px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--line);
+}
+
+.signal-strip article {
+  padding: 20px;
+  background: rgba(13, 19, 34, 0.94);
+}
+
+.signal-strip b {
+  display: block;
+  color: var(--text);
+  font-family: var(--serif);
+  font-size: 1.35rem;
+  font-weight: 500;
+}
+
+.signal-strip span {
+  display: block;
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
 section {
   border-top: 1px solid var(--line);
   padding: 96px 0;
@@ -1205,6 +1340,138 @@ footer {
   color: var(--accent);
 }
 
+.evidence-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: -18px 0 22px;
+}
+
+.evidence-toolbar button {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 8px 15px;
+  background: var(--panel);
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.evidence-toolbar button.on,
+.evidence-toolbar button:hover {
+  border-color: var(--accent-dim);
+  background: rgba(90, 200, 250, 0.08);
+  color: var(--accent);
+}
+
+.evidence-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 18px;
+}
+
+.evidence-card {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--panel);
+}
+
+.evidence-card.wide {
+  grid-row: span 2;
+}
+
+.evidence-card.hide {
+  display: none;
+}
+
+.evidence-card button {
+  display: block;
+  width: 100%;
+  border: 0;
+  padding: 0;
+  background: #05070d;
+}
+
+.evidence-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 11;
+  object-fit: cover;
+  filter: saturate(0.92) contrast(1.03);
+  transition:
+    transform 0.24s ease,
+    filter 0.24s ease;
+}
+
+.evidence-card.wide img {
+  aspect-ratio: 4 / 5;
+}
+
+.evidence-card button:hover img {
+  transform: scale(1.025);
+  filter: saturate(1.05) contrast(1.08);
+}
+
+.evidence-card figcaption {
+  padding: 16px 18px 18px;
+}
+
+.evidence-card b {
+  display: block;
+  color: var(--text);
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  font-weight: 500;
+}
+
+.evidence-card span {
+  display: block;
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.lightbox {
+  width: min(1040px, calc(100% - 32px));
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 18px;
+  background: var(--panel);
+  color: var(--text);
+}
+
+.lightbox::backdrop {
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(4px);
+}
+
+.lightbox img {
+  display: block;
+  width: 100%;
+  max-height: 76vh;
+  object-fit: contain;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.lightbox p {
+  margin-top: 12px;
+  color: var(--text);
+  font-family: var(--serif);
+  font-size: 1.1rem;
+}
+
+.lightbox-close {
+  float: right;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  margin-bottom: 10px;
+  padding: 6px 10px;
+  background: var(--bg2);
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
 .footer-cols p {
   max-width: 360px;
   font-size: 0.9rem;
@@ -1243,13 +1510,28 @@ footer {
   .grid2,
   .limit-cards,
   .work-deck,
+  .mission-grid,
+  .signal-strip,
   .steps,
   .ba-grid,
   .cfg-grid,
+  .evidence-grid,
   .resource-grid,
   .footer-cols,
   .stat-row {
     grid-template-columns: 1fr;
+  }
+
+  .orbit-map {
+    min-height: 320px;
+  }
+
+  .evidence-card.wide {
+    grid-row: auto;
+  }
+
+  .evidence-card.wide img {
+    aspect-ratio: 16 / 11;
   }
 
   section {
@@ -1286,5 +1568,23 @@ footer {
   .phase-grid,
   .candidate-table div {
     grid-template-columns: 1fr;
+  }
+
+  .orbit-map {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    min-height: auto;
+    padding: 16px;
+  }
+
+  .orbit-map::before,
+  .orbit-map::after {
+    display: none;
+  }
+
+  .orbit-node {
+    position: static;
+    width: auto;
   }
 }

@@ -376,6 +376,55 @@ function setupCurtain(root) {
   })
 })()
 
+;(function missionNavigator() {
+  const nodes = $$(".orbit-node")
+  if (!nodes.length) return
+  nodes.forEach((node) => {
+    node.addEventListener("click", () => {
+      nodes.forEach((item) => item.classList.toggle("on", item === node))
+      const target = $(node.dataset.jump)
+      target?.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "start" })
+    })
+  })
+})()
+
+;(function evidenceWall() {
+  const tabs = $$("#evidence-tabs button")
+  const cards = $$(".evidence-card")
+  const lightbox = $("#figure-lightbox")
+  if (!tabs.length || !cards.length) return
+
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      const filter = tab.dataset.filter
+      tabs.forEach((item) => item.classList.toggle("on", item === tab))
+      cards.forEach((card) => {
+        const show = filter === "all" || card.dataset.kind === filter
+        card.classList.toggle("hide", !show)
+      })
+    })
+  })
+
+  if (!lightbox) return
+  const image = $("img", lightbox)
+  const caption = $("p", lightbox)
+  const close = $(".lightbox-close", lightbox)
+
+  $$(".evidence-card button").forEach((button) => {
+    button.addEventListener("click", () => {
+      image.src = button.dataset.img
+      image.alt = button.dataset.title || "Paper figure"
+      caption.textContent = button.dataset.title || "Paper figure"
+      if (typeof lightbox.showModal === "function") lightbox.showModal()
+    })
+  })
+
+  close?.addEventListener("click", () => lightbox.close())
+  lightbox.addEventListener("click", (event) => {
+    if (event.target === lightbox) lightbox.close()
+  })
+})()
+
 ;(function quickstartPlanner() {
   const instrument = $("#instrument-config")
   const pixelScale = $("#pixel-scale")
